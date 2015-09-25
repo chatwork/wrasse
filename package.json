@@ -13,6 +13,10 @@
     "injection",
     "decorators"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chatwork/wrasse.git"
+  },
   "author": "ChatWork",
   "license": "MIT",
   "devDependencies": {
