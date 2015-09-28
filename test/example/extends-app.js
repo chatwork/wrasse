@@ -9,15 +9,30 @@ import {
 
 @wr.inject({
   ComponentA,
-  ComponentB,
-  ComponentC
+  ComponentB
 })
-export default class Application {
+export class SuperApplication {
   /**
    * @constructor
    */
   constructor() {
     //
+  }
+
+  getComponentC() {
+    return this.ComponentC;
+  }
+}
+
+@wr.inject({
+  ComponentC
+})
+export class Application extends SuperApplication {
+  /**
+   * @constructor
+   */
+  constructor() {
+    super();
   }
 
   useComponentB(str) {

@@ -1,4 +1,4 @@
-import ij from './injector-singleton';
+import wr from './wrasse-singleton';
 
 import _ComponentA from './component-a';
 import _ComponentB from './component-b';
@@ -10,8 +10,8 @@ import {
   ComponentC
 } from './module-keys';
 
-ij.setModule(ComponentA, _ComponentA);
-ij.setModule(ComponentB, _ComponentB);
-ij.setModule(ComponentC, _ComponentC);
+wr.set(ComponentA, _ComponentA);
+wr.set(ComponentB, _ComponentB);
+wr.set(ComponentC, _ComponentC);
 
-export default ij;
+export default wr;

@@ -18,10 +18,4 @@ describe('Inject regular', () => {
     const text = app.useComponentB('it is easy!');
     assert.strictEqual(text, 'This is ComponentB, it is easy!');
   });
-
-  it('should be injected 3 items', () => {
-    const app = new Application();
-    const deps = app.dependenciesItems();
-    assert.strictEqual(Object.keys(deps).length, 3);
-  });
 });
