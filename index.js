@@ -7,9 +7,9 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _libInjector = require('./lib/injector');
+var _libWrasse = require('./lib/wrasse');
 
-var _libInjector2 = _interopRequireDefault(_libInjector);
+var _libWrasse2 = _interopRequireDefault(_libWrasse);
 
-exports['default'] = _libInjector2['default'];
+exports['default'] = _libWrasse2['default'];
 module.exports = exports['default'];

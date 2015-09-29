@@ -1,6 +1,6 @@
 import assert from 'assert';
 import Application from './example/app';
-import ij from './example/injector-singleton';
+import wr from './example/Wrasse-singleton';
 
 // Regular Component
 import _ComponentA from './example/component-a';
@@ -24,8 +24,8 @@ class MockComponentB {
 
 describe('Inject mock', () => {
   beforeEach(() => {
-    ij.setModule(ComponentA, _ComponentA);
-    ij.setModule(ComponentB, MockComponentB);
+    Application.prototype.ComponentA = _ComponentA;
+    Application.prototype.ComponentB = MockComponentB;
   });
 
   it('should be injected ComponentA', () => {
@@ -46,22 +46,13 @@ describe('Inject mock', () => {
   });
 
   it('should be injected Mock ComponentC', () => {
-    ij.setModule(ComponentC, 'MockComponentC');
     const app = new Application();
-    const deps = app.dependenciesItems();
-    assert.strictEqual(deps.ComponentC, 'MockComponentC');
+    app.ComponentC = 'MockComponentC';
+    assert.strictEqual(app.getComponentC(), 'MockComponentC');
   });
 
   it('should be injected Regular ComponentC', () => {
-    ij.setModule(ComponentC, _ComponentC);
     const app = new Application();
-    const deps = app.dependenciesItems();
-    assert.strictEqual(deps.ComponentC, 'ComponentC');
-  });
-
-  it('should be injected 3 items', () => {
-    const app = new Application();
-    const deps = app.dependenciesItems();
-    assert.strictEqual(Object.keys(deps).length, 3);
+    assert.strictEqual(app.getComponentC(), 'ComponentC');
   });
 });
