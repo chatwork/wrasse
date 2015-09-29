@@ -11,7 +11,7 @@ First, you can instantiate Wrasse and it needs export. Because it is necessary t
 
 For example, as `wrasse-singleton.js`.
 
-```
+```js
 import Wrasse from 'wrasse';
 const wr = new Wrasse();
 export default wr;
@@ -21,9 +21,9 @@ export default wr;
 
 Second, you can set a module. You must register the key to get the module.
 
-**`register-dependencies.js`**
+`register-dependencies.js`
 
-```
+```js
 import wr from './wrasse-singleton';
 
 import _ComponentA from './component-a';
@@ -43,9 +43,9 @@ wr.set(ComponentC, _ComponentC);
 export default wr;
 ```
 
-**`module-keys.js`**
+`module-keys.js`
 
-```
+```js
 export const ComponentA = Symbol('ComponentA');
 export const ComponentB = Symbol('ComponentB');
 export const ComponentC = Symbol('ComponentC');
@@ -65,7 +65,7 @@ You can use the inject in your implementation with Babel.
 babel --optional es7.decorators
 ```
 
-```
+```js
 import wr from './register-dependencies';
 
 import {
@@ -81,15 +81,15 @@ import {
 })
 export default class Application {
   constructor() {
-    console.log(this.ComponentA); // 格納済み
+    console.log(this.ComponentA); // this.ComponentA, this.ComponentB, this.ComponentC are stored.
   }
 }
 ```
 
 ## API
-- `Wrasse`
+- `Wrasse() @constructor`
 - `Wrasse#set(key: string|Symbol, module: any): void`
-- `Wrasse#inject(keys: {[key: string]: string|Symbol}): constructor @decoratable`
+- `Wrasse#inject(keys: {[key: string]: string|Symbol}): (target) => target @decoratable`
 
 ## Author
 - [OKUNOKENTARO @armorik83](https://github.com/armorik83)
